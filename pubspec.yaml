@@ -8,7 +8,10 @@ environment:
   flutter: 3.7.0
 
 dependencies:
-  blue_thermal_printer: ^1.2.3
+  blue_thermal_printer:
+    git:
+      url: https://github.com/stepsharpdigital/blue_thermal_printer.git
+      ref: dev
   easy_logger: ^0.0.2
   esc_pos_utils_plus: ^2.0.2
   ffi: ^2.1.0

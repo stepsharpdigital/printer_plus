@@ -1,7 +1,6 @@
 // ignore_for_file: public_member_api_docs
 
 import 'dart:io';
-import 'dart:typed_data';
 
 import 'package:blue_thermal_printer/blue_thermal_printer.dart' as themal;
 import 'package:esc_pos_utils_plus/esc_pos_utils_plus.dart';
@@ -11,7 +10,6 @@ import 'package:printer_plus/src/enums/connection_response.dart';
 import 'package:printer_plus/src/models/bluetooth_printer.dart';
 import 'package:printer_plus/src/models/pos_printer.dart';
 import 'package:printer_plus/src/printer_plus.dart';
-
 import 'package:printer_plus/src/services/bluetooth_service.dart';
 import 'package:printer_plus/src/services/printer_manager.dart';
 
@@ -51,7 +49,11 @@ class BluetoothPrinterManager extends PrinterManager {
             connected.indexWhere((e) => e.remoteId == fbdevice.remoteId);
         if (index < 0) await fbdevice.connect();
       } else if (Platform.isAndroid) {
-        final device = themal.BluetoothDevice(printer!.name, printer!.address);
+        final device = themal.BluetoothDevice(
+          printer!.name,
+          printer!.address,
+          printer!.name,
+        );
         await bluetooth.connect(device);
       }
 
